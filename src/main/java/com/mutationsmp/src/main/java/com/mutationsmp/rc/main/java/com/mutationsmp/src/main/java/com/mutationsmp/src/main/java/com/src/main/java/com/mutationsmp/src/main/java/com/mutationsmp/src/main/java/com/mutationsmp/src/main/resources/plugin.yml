@@ -1,0 +1,19 @@
+owner-name: "PrimeGlacier"
+grace:
+  enabled: true
+  duration-seconds: 900
+sounds:
+  start: "ENTITY_ENDER_DRAGON_GROWL"
+  power: "ITEM_TOTEM_USE"
+  pvp_enable: "UI_TOAST_CHALLENGE_COMPLETE"
+messages:
+  prefix: "&b[MutationSMP]&f "
+cooldowns:
+  power1: 10
+  power2: 20
+  power3: 30
+  power4: 40
+  power5: 60
+particles:
+  enabled: true
+  power-particles: 6
