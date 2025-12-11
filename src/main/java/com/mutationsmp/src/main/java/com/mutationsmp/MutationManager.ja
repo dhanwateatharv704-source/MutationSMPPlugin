@@ -1,0 +1,40 @@
+package com.mutationsmp;
+
+import org.bukkit.entity.Player;
+import java.util.HashMap;
+import java.util.UUID;
+
+public class MutationManager {
+
+    private final HashMap<UUID, String> playerMutants = new HashMap<>();
+    private final HashMap<UUID, Integer> mutantLevels = new HashMap<>();
+
+    // Example 8 mutants
+    private final String[] mutants = {
+            "Inferno", "Glacierborn", "Voltshifter", "Phantomshade",
+            "Titanforge", "Earthwarden", "Stormcaller", "Netherbane"
+    };
+
+    public void assignMutation(Player player) {
+        if (!playerMutants.containsKey(player.getUniqueId())) {
+            int index = (int) (Math.random() * mutants.length);
+            playerMutants.put(player.getUniqueId(), mutants[index]);
+            mutantLevels.put(player.getUniqueId(), 1);
+            player.sendMessage("§bYour mutation: " + mutants[index] + " (Level 1)");
+        }
+    }
+
+    public String getMutation(Player player) {
+        return playerMutants.getOrDefault(player.getUniqueId(), "None");
+    }
+
+    public int getLevel(Player player) {
+        return mutantLevels.getOrDefault(player.getUniqueId(), 0);
+    }
+
+    public void levelUp(Player player) {
+        int current = getLevel(player);
+        mutantLevels.put(player.getUniqueId(), current + 1);
+        player.sendMessage("§aYour mutant level increased to " + (current + 1));
+    }
+}
